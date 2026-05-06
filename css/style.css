@@ -6661,19 +6661,83 @@ ul.insta-info-list {
 }
 
 @media (max-width: 768px) {
+    /* Xếp dọc 2 card cặp đôi */
     .couple-wrapper {
         flex-direction: column;
+        gap: 20px;
+    }
+
+    .couple-wrapper .col-md-6 {
+        width: 100%;
     }
 
     .couple-card {
-        margin-bottom: 20px;
-        padding: 30px 20px;
+        padding: 28px 20px 24px;
+        margin-bottom: 0;
+        border-radius: 24px;
+        box-shadow: 0 8px 30px rgba(225, 68, 86, 0.08);
     }
 
+    /* Khung ảnh tròn nhỏ gọn, không bị méo */
     .couple-image-frame {
-        width: 220px;
-        height: 220px;
+        width: 180px;
+        height: 180px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        padding: 5px;
     }
+
+    .couple-image-frame .couple-img {
+        object-fit: cover;
+        object-position: center top;
+        border: 3px solid #fff;
+    }
+
+    /* Tên nhỏ lại vừa màn hình */
+    .couple-name {
+        font-size: 26px;
+        margin-bottom: 4px;
+    }
+
+    .couple-role {
+        font-size: 13px;
+        letter-spacing: 2px;
+        margin-bottom: 14px;
+    }
+
+    /* Mô tả rút gọn, đọc được */
+    .couple-desc {
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 16px;
+        padding: 0 4px;
+        color: #777;
+    }
+
+    /* Dải tim phân cách giữa 2 card */
+    .couple-wrapper::after {
+        content: '❤';
+        display: block;
+        text-align: center;
+        font-size: 22px;
+        color: #e14456;
+        order: 1;
+        margin: -10px auto;
+        animation: heartbeat 1.2s infinite;
+    }
+
+    .couple-wrapper .col-md-6:first-child {
+        order: 0;
+    }
+
+    .couple-wrapper .col-md-6:last-child {
+        order: 2;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
 }
 
 /* Center navigation on desktop (> 960px) */
