@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  wedding-app:
+    build: .
+    container_name: wedding-app
+    ports:
+      - "3000:3000"
+    volumes:
+      # Map file guestbook.json ra ngoài host để dữ liệu không bị mất 
+      # khi xóa hoặc khởi động lại container
+      - ./guestbook.json:/usr/src/app/guestbook.json
+    restart: unless-stopped
