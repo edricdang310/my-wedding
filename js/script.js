@@ -353,7 +353,7 @@
                         if (res.success) {
                             renderMessages(res.messages);
                             $('#guestbookForm')[0].reset();
-                            alert('Cảm ơn bạn đã gửi lời chúc!');
+                            showThankDialog();
                         }
                     },
                     error: function () {
@@ -371,4 +371,30 @@
 
 })(jQuery);
 
+// Thank You Dialog
+function showThankDialog() {
+    var dialog = document.getElementById('thankYouDialog');
+    dialog.classList.add('active');
 
+    // Auto-close sau 5 giây
+    setTimeout(function () {
+        closeThankDialog();
+    }, 5000);
+}
+
+function closeThankDialog() {
+    var dialog = document.getElementById('thankYouDialog');
+    dialog.classList.remove('active');
+}
+
+// Click overlay để đóng
+document.addEventListener('DOMContentLoaded', function () {
+    var overlay = document.getElementById('thankYouDialog');
+    if (overlay) {
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) {
+                closeThankDialog();
+            }
+        });
+    }
+});
