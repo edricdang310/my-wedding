@@ -6661,6 +6661,7 @@ ul.insta-info-list {
 }
 
 @media (max-width: 768px) {
+
     /* Xếp dọc 2 card cặp đôi */
     .couple-wrapper {
         flex-direction: column;
@@ -6736,8 +6737,15 @@ ul.insta-info-list {
 }
 
 @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.25); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
 }
 
 /* Center navigation on desktop (> 960px) */
@@ -7056,8 +7064,13 @@ ul.insta-info-list {
 }
 
 @keyframes fadeOverlay {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes dialogPop {
@@ -7065,6 +7078,7 @@ ul.insta-info-list {
         opacity: 0;
         transform: scale(0.8) translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -7072,10 +7086,23 @@ ul.insta-info-list {
 }
 
 @keyframes heartPulse {
-    0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.2); }
-    50% { transform: scale(1); }
-    75% { transform: scale(1.15); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.15);
+    }
 }
 
 /* Slider Fixes */
@@ -7084,9 +7111,11 @@ ul.insta-info-list {
     min-height: 500px;
     position: relative;
 }
+
 .hero-slider .swiper-container {
     height: 100%;
 }
+
 .hero-slider .swiper-slide .slide-inner {
     width: 100%;
     height: 100%;
@@ -7097,6 +7126,7 @@ ul.insta-info-list {
     background-position: center;
     background-repeat: no-repeat;
 }
+
 @media (max-width: 767px) {
     .hero-slider {
         height: 70vh;
