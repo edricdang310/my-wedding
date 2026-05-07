@@ -7077,3 +7077,28 @@ ul.insta-info-list {
     50% { transform: scale(1); }
     75% { transform: scale(1.15); }
 }
+
+/* Slider Fixes */
+.hero-slider {
+    height: 100vh;
+    min-height: 500px;
+    position: relative;
+}
+.hero-slider .swiper-container {
+    height: 100%;
+}
+.hero-slider .swiper-slide .slide-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+@media (max-width: 767px) {
+    .hero-slider {
+        height: 70vh;
+    }
+}

@@ -65,15 +65,27 @@
             }
         };
 
-        var swiper = new Swiper(".swiper-container", swiperOptions);
-
         // DATA BACKGROUND IMAGE
-        var sliderBgSetting = $(".slide-bg-image");
-        sliderBgSetting.each(function (indx) {
-            if ($(this).attr("data-background")) {
-                $(this).css("background-image", "url(" + $(this).data("background") + ")");
-            }
+        function applyBgImage() {
+            var sliderBgSetting = $(".slide-bg-image");
+            sliderBgSetting.each(function (indx) {
+                if ($(this).attr("data-background")) {
+                    $(this).css("background-image", "url(" + $(this).attr("data-background") + ")");
+                }
+            });
+        }
+        applyBgImage();
+        
+        // Swiper initialization (moved slightly for clarity)
+        var swiper = new Swiper(".swiper-container", swiperOptions);
+        
+        // Apply background images again after Swiper clones elements
+        swiper.on('init', function() {
+            applyBgImage();
         });
+        // Swiper init event might have already fired, so call it again
+        applyBgImage();
+        setTimeout(applyBgImage, 500);
 
 
 
