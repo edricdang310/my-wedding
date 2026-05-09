@@ -615,6 +615,10 @@
     top: 0
   }
 
+  #inner-navigation {
+    display: none !important;
+  }
+
   .home-3 #inner-navigation .navbar.navbar-sticky-in {
     margin-top: 0
   }

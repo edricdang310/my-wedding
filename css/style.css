@@ -17,7 +17,8 @@ body {
 
 html,
 body {
-    overflow-x: hidden
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 img {
@@ -6499,7 +6500,7 @@ ul.insta-info-list {
 }
 
 .messages-list {
-    max-height: 380px;
+    max-height: 480px;
     overflow-y: auto;
     padding-right: 10px;
 }
@@ -6517,8 +6518,8 @@ ul.insta-info-list {
 }
 
 .message-item {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
     border-bottom: 1px dashed #eee;
 }
 
@@ -6541,6 +6542,21 @@ ul.insta-info-list {
     color: #666;
     font-style: italic;
     line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.read-more-btn {
+    color: #df4758;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 5px;
+    display: inline-block;
+    text-decoration: underline;
+}
+
+.read-more-btn:hover {
+    color: #c23343;
 }
 
 /* Couple Section */
@@ -7158,8 +7174,13 @@ ul.insta-info-list {
 }
 
 @keyframes welcomeFadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .welcome-dialog {
@@ -7178,15 +7199,24 @@ ul.insta-info-list {
 }
 
 @keyframes welcomePop {
-    from { opacity: 0; transform: scale(0.75) translateY(30px); }
-    to   { opacity: 1; transform: scale(1) translateY(0); }
+    from {
+        opacity: 0;
+        transform: scale(0.75) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 /* Viền gradient trên cùng */
 .welcome-dialog::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 5px;
     background: linear-gradient(90deg, #e14456, #f857a6, #ff9a8b, #f857a6, #e14456);
     background-size: 200%;
@@ -7194,8 +7224,13 @@ ul.insta-info-list {
 }
 
 @keyframes shimmerBar {
-    0%   { background-position: 0% center; }
-    100% { background-position: 200% center; }
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
 }
 
 /* Cánh hoa / emoji trang trí */
@@ -7209,8 +7244,13 @@ ul.insta-info-list {
 }
 
 @keyframes petalSwing {
-    from { transform: rotate(-3deg); }
-    to   { transform: rotate(3deg); }
+    from {
+        transform: rotate(-3deg);
+    }
+
+    to {
+        transform: rotate(3deg);
+    }
 }
 
 /* Tim đập */
@@ -7224,8 +7264,15 @@ ul.insta-info-list {
 }
 
 @keyframes heartPulseWelcome {
-    0%, 100% { transform: scale(1); }
-    50%       { transform: scale(1.2); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
 }
 
 /* Tên cô dâu chú rể */
@@ -7304,19 +7351,23 @@ ul.insta-info-list {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     opacity: 0;
     transition: opacity 0.3s;
 }
 
-.welcome-btn:hover::after { opacity: 1; }
+.welcome-btn:hover::after {
+    opacity: 1;
+}
 
 .welcome-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 14px 35px rgba(225, 68, 86, 0.45);
 }
 
-.welcome-btn:active { transform: translateY(0); }
+.welcome-btn:active {
+    transform: translateY(0);
+}
 
 .welcome-btn .fa-heart {
     animation: heartPulseWelcome 1s ease infinite;
@@ -7330,7 +7381,165 @@ ul.insta-info-list {
         border-radius: 22px;
     }
 
-    .welcome-title { font-size: 32px; }
-    .welcome-msg   { font-size: 14px; }
-    .welcome-btn   { padding: 12px 28px; font-size: 15px; }
+    .welcome-title {
+        font-size: 32px;
+    }
+
+    .welcome-msg {
+        font-size: 14px;
+    }
+
+    .welcome-btn {
+        padding: 12px 28px;
+        font-size: 15px;
+    }
+}
+
+/* ═══ Floating Guestbook Button ═══ */
+@keyframes biilogo-pulse {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(0.95, 0.95, 0.95);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes gb-shake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(-18deg);
+    }
+
+    30% {
+        transform: rotate(14deg);
+    }
+
+    45% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(7deg);
+    }
+
+    75% {
+        transform: rotate(-4deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+/* Wrapper cố định */
+.floating-guestbook-wrap {
+    position: fixed;
+    bottom: 70px;
+    right: 50px;
+    width: 40px;
+    height: 40px;
+    z-index: 9999;
+}
+
+/* Pulse ring xung quanh */
+.floating-guestbook-wrap::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(242, 59, 67, 0.3);
+    width: 120%;
+    height: 120%;
+    left: -10%;
+    top: -10%;
+    animation: biilogo-pulse 1s infinite;
+    z-index: 1;
+}
+
+/* Icon nút tròn */
+.floating-gb-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #df4758;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    text-decoration: none;
+}
+
+.floating-gb-icon:hover,
+.floating-gb-icon:focus {
+    color: white;
+    text-decoration: none;
+}
+
+/* Hiệu ứng lắc */
+.floating-guestbook-wrap.gb-shaking .floating-gb-icon {
+    animation: gb-shake 0.7s ease;
+}
+
+/* Tooltip hiện sang trái nút */
+.floating-gb-tooltip {
+    position: absolute;
+    right: calc(100% + 14px);
+    top: 50%;
+    transform: translateY(-50%) scale(0.85);
+    background: #df4758;
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: arial, sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 3;
+}
+
+/* Mũi tên chỉ sang phải (về phía nút) */
+.floating-gb-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border: 7px solid transparent;
+    border-left-color: #df4758;
+}
+
+/* Trạng thái hiện tooltip */
+.floating-guestbook-wrap.gb-show-label .floating-gb-tooltip {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
+
+@media(max-width: 799px) {
+    .floating-guestbook-wrap {
+        bottom: 30px;
+        right: 20px;
+    }
+
+    .messages-list {
+        max-height: 80vh;
+    }
 }
