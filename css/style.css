@@ -7156,6 +7156,12 @@ ul.insta-info-list {
 /* ============================
    WELCOME DIALOG
    ============================ */
+.no-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+    touch-action: none;
+}
+
 .welcome-overlay {
     display: none;
     position: fixed;
@@ -7207,6 +7213,17 @@ ul.insta-info-list {
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes welcomeSlideUpOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-50px);
     }
 }
 

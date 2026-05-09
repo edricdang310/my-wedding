@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="no-scroll">
 
 <head>
     <meta charset="UTF-8">
@@ -91,7 +91,7 @@
     <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-K9L0ZFE1PJ');</script>
 </head>
 
-<body data-spy="scroll" data-target=".navbar-fixed-top" class="home-3">
+<body data-spy="scroll" data-target=".navbar-fixed-top" class="home-3 no-scroll">
     <!-- <div class="preloader-area">
         <div class="loader loader-13">
             <div class="css-heart heart1"></div>
@@ -212,9 +212,10 @@
                             <h3 class="couple-name">Hữu Thịnh</h3>
                         </div>
                         <div class="couple-desc">
-                            Chàng trai quê Ninh Bình, mang nét mộc mạc và chân thành của vùng đất cố đô. Ban ngày chăm
-                            chỉ làm việc, ban đêm ngoan ngoãn nộp lương cho vợ. Hiền lành, ít nói nhưng được cái rất
-                            “biết điều” với nóc nhà. Phương châm sống: “Đội vợ lên đầu, trường sinh bất lão”.
+                            Một người đàn ông với bản tính mộc mạc và chân thành. Dù ít nói nhưng mọi hành động đều gói
+                            ghém bằng tình yêu: luôn chăm chỉ vì tương lai của gia đình và dành sự tôn trọng tuyệt đối
+                            cho 'người bạn đời'. Với mình, hạnh phúc đơn giản là được bảo vệ và đồng hành cùng 'nóc nhà'
+                            trên mọi chặng đường.
                         </div>
                     </div>
                 </div>
@@ -230,9 +231,9 @@
                             <h3 class="couple-name">Mỹ Duyên</h3>
                         </div>
                         <div class="couple-desc">
-                            Cô gái Ninh Bình có tâm hồn mộng mơ, đam mê viết lách. Thích xem tử vi nhưng cuối cùng lại
-                            "bấm quẻ" trúng ngay anh chàng IT. Giao diện hiền lành nhưng hệ điều hành lại nắm trọn quyền
-                            lực trong nhà. Tương lai dự định học tiếng Trung để... mắng chồng đa ngôn ngữ.
+                            Cô gái Ninh Bình có tâm hồn mộng mơ, đam mê viết lách. Yêu thích tử vi nhưng lại 'chấm' ngay
+                            anh chàng IT. Giao diện hiền lành nhưng bên trong nắm trọn quyền 'điều hành' gia đình. Đang
+                            nỗ lực học tiếng Trung để... 'chăm sóc' chồng bằng nhiều ngôn ngữ hơn.
                         </div>
                     </div>
                 </div>
@@ -855,11 +856,20 @@
     <script>
         function closeWelcomeDialog() {
             var overlay = document.getElementById('welcomeDialog');
-            overlay.style.animation = 'welcomeFadeIn 0.3s ease reverse';
+            var dialog = overlay.querySelector('.welcome-dialog');
+
+            overlay.style.animation = 'welcomeFadeIn 0.3s ease reverse forwards';
+            dialog.style.animation = 'welcomeSlideUpOut 0.3s ease forwards';
+
             setTimeout(function () {
                 overlay.classList.remove('active');
                 overlay.style.display = 'none';
-                document.body.style.overflow = '';
+                document.documentElement.classList.remove('no-scroll');
+                document.body.classList.remove('no-scroll');
+
+                // Reset styles
+                overlay.style.animation = '';
+                dialog.style.animation = '';
             }, 280);
         }
 
@@ -868,7 +878,6 @@
             setTimeout(function () {
                 var overlay = document.getElementById('welcomeDialog');
                 overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
             }, 300);
         });
 
