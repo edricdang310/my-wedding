@@ -866,6 +866,9 @@
                 overlay.style.display = 'none';
                 document.documentElement.classList.remove('no-scroll');
                 document.body.classList.remove('no-scroll');
+                
+                // Trigger resize to fix snow/heart fall height
+                window.dispatchEvent(new Event('resize'));
 
                 // Reset styles
                 overlay.style.animation = '';
