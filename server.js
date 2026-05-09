@@ -82,8 +82,8 @@ const server = http.createServer((req, res) => {
     }
 
     // Static file serving
-    let filePath = req.url === '/' ? '/index.html' : req.url;
-    filePath = filePath.split('?')[0]; // Bỏ query params
+    let filePath = req.url.split('?')[0]; // Bỏ query params trước (fix lỗi Zalo thêm ?zarsrc=...)
+    if (filePath === '/') filePath = '/index.html';
     filePath = path.join(__dirname, filePath);
 
     const extname = String(path.extname(filePath)).toLowerCase();
