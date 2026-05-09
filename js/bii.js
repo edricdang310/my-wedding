@@ -21,14 +21,14 @@ window.onload = (event) => {
 					flakeCount = 3;
 				}
 			}
-            
-            let snowContainer = document.getElementById('snow-container');
-            if (!snowContainer) {
-                snowContainer = document.createElement('div');
-                snowContainer.id = 'snow-container';
-                snowContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999999;';
-                document.body.appendChild(snowContainer);
-            }
+
+			let snowContainer = document.getElementById('snow-container');
+			if (!snowContainer) {
+				snowContainer = document.createElement('div');
+				snowContainer.id = 'snow-container';
+				snowContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999999;';
+				document.body.appendChild(snowContainer);
+			}
 
 			snowFall.snow(snowContainer, { image: SNOW_Picture, minSize: 15, maxSize: 32, flakeCount: flakeCount, maxSpeed: 3, minSpeed: 1 });
 		} else if (biicore.effect.type == 'snow') {
@@ -42,32 +42,32 @@ window.onload = (event) => {
 					flakeCount = 25;
 				}
 			}
-            
-            let snowContainer = document.getElementById('snow-container');
-            if (!snowContainer) {
-                snowContainer = document.createElement('div');
-                snowContainer.id = 'snow-container';
-                snowContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999999;';
-                document.body.appendChild(snowContainer);
-            }
+
+			let snowContainer = document.getElementById('snow-container');
+			if (!snowContainer) {
+				snowContainer = document.createElement('div');
+				snowContainer.id = 'snow-container';
+				snowContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999999;';
+				document.body.appendChild(snowContainer);
+			}
 
 			snowFall.snow(snowContainer, { round: true, shadow: true, flakeCount: flakeCount, minSize: 1, maxSize: 8 });
 		} else if (biicore.effect.type == 'custom') {
 			let effectSetting = biicore.effect.setting;
 			let minSpeed = (parseInt(effectSetting.speed) - 3);
 			if (minSpeed <= 0) minSpeed = 1;
-            
-            // Create a fixed container so hearts fall evenly within the viewport at all times
-            let snowContainer = document.getElementById('snow-container');
-            if (!snowContainer) {
-                snowContainer = document.createElement('div');
-                snowContainer.id = 'snow-container';
-                snowContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999999;';
-                document.body.appendChild(snowContainer);
-            }
-            
-            let customFlakeCount = parseInt(effectSetting.number);
-            if (customFlakeCount > 12) customFlakeCount = 12;
+
+			// Create a fixed container so hearts fall evenly within the viewport at all times
+			let snowContainer = document.getElementById('snow-container');
+			if (!snowContainer) {
+				snowContainer = document.createElement('div');
+				snowContainer.id = 'snow-container';
+				snowContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999999;';
+				document.body.appendChild(snowContainer);
+			}
+
+			let customFlakeCount = parseInt(effectSetting.number);
+			if (customFlakeCount > 5) customFlakeCount = 5;
 
 			snowFall.snow(snowContainer, { image: effectSetting.icon, minSize: effectSetting.minSize, maxSize: effectSetting.maxSize, flakeCount: customFlakeCount, maxSpeed: effectSetting.speed, minSpeed: minSpeed });
 		}
@@ -136,7 +136,7 @@ if (biicore.bgMusic) {
 				console.log("Playback started successfully via " + event.type);
 				document.getElementById("playerVolumeOff").style.display = "none";
 				document.getElementById("playerVolumeOn").style.display = "block";
-				
+
 				// Xóa tất cả các sự kiện sau khi đã phát nhạc thành công
 				cleanupListeners();
 			}).catch(function (error) {
