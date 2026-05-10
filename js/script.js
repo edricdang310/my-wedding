@@ -2,17 +2,19 @@
     'use strict'; window.FPConfig = { delay: 0, ignoreKeywords: [], maxRPS: 3, hoverDelay: 50 }; $(window).on("load", function () { $('.spinner').fadeOut(); $('.preloader-area').delay(350).fadeOut('slow'); }); jQuery(document).ready(function ($) {
         $(window).on('scroll', function () { if ($(window).scrollTop() > 50) { $('.navbar-fixed-top').addClass('sticky'); } else { $('.navbar-fixed-top').removeClass('sticky'); } }); 
         
-        // Add slide-in animation to album images and events on mobile
-        if ($(window).width() <= 768) {
-            $('.masonry-gallery .grid-item').each(function(index) {
-                $(this).addClass('wow');
-                if (index % 2 === 0) {
-                    $(this).addClass('fadeInLeft');
-                } else {
-                    $(this).addClass('fadeInRight');
-                }
-            });
+        // Add slide-in animation to album images (odd: right→left, even: left→right)
+        $('.masonry-gallery .grid-item').each(function(index) {
+            $(this).addClass('wow');
+            if (index % 2 === 0) {
+                // ảnh lẻ (1, 3, 5,...): trượt từ phải qua trái
+                $(this).addClass('fadeInRight');
+            } else {
+                // ảnh chẵn (2, 4, 6,...): trượt từ trái qua phải
+                $(this).addClass('fadeInLeft');
+            }
+        });
 
+        if ($(window).width() <= 768) {
             $('.event-stack').each(function(index) {
                 $(this).removeClass('fadeIn');
                 if (index % 2 === 0) {
@@ -420,17 +422,7 @@
             }
         });
 
-        // Add slide-in animation to album images on mobile
-        if ($(window).width() <= 768) {
-            $('.masonry-gallery .grid-item').each(function(index) {
-                $(this).addClass('wow');
-                if (index % 2 === 0) {
-                    $(this).addClass('fadeInLeft');
-                } else {
-                    $(this).addClass('fadeInRight');
-                }
-            });
-        }
+        // (Album slide animation already applied above)
 
     });
     $(window).on('resize', function () { var bodyheight = $(this).height(); $("#mt_banner").height(bodyheight); }).resize();
